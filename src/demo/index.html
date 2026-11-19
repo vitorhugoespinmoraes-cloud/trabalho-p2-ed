@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador – Heap Binário (Min-Heap / Max-Heap)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Heap Binário – Min-Heap / Max-Heap</h1>
+    <p>Árvore binária completa e array subjacente, sempre sincronizados.</p>
+  </header>
+
+  <section class="controles">
+    <label>Tipo:
+      <select id="tipo">
+        <option value="min">Min-Heap</option>
+        <option value="max">Max-Heap</option>
+      </select>
+    </label>
+    <button id="btn-medio">Caso Médio</button>
+    <button id="btn-pior">Pior Caso</button>
+    <input id="entrada-custom" type="text" placeholder="Ex.: 6, 2, 9, 4">
+    <button id="btn-custom">Exemplo Customizado</button>
+  </section>
+
+  <section class="controles">
+    <button id="btn-executar">▶ Executar (Play)</button>
+    <button id="btn-pausar">⏸ Pausar</button>
+    <button id="btn-proximo">⏭ Próximo passo</button>
+    <button id="btn-reiniciar">↺ Reiniciar (Reset)</button>
+    <strong id="titulo-cenario"></strong>
+  </section>
+
+  <main>
+    <div class="coluna">
+      <section class="painel">
+        <h2>Árvore Binária Completa</h2>
+        <div class="rolagem">
+          <div id="arvore">
+            <svg id="arestas" viewBox="0 0 760 360"></svg>
+          </div>
+        </div>
+      </section>
+
+      <section class="painel">
+        <h2>Array Subjacente</h2>
+        <div class="rolagem">
+          <div id="array"></div>
+        </div>
+        <p class="formulas">pai(i) = (i-1)//2 &nbsp;|&nbsp; esq(i) = 2i+1 &nbsp;|&nbsp; dir(i) = 2i+2</p>
+        <div class="legenda">
+          <span class="legenda-item atual">atual</span>
+          <span class="legenda-item pai">pai</span>
+          <span class="legenda-item filho">filhos</span>
+          <span class="legenda-item comparado">comparado</span>
+          <span class="legenda-item troca">troca</span>
+        </div>
+      </section>
+    </div>
+
+    <aside class="painel">
+      <h2>Painel de Estado e Métricas</h2>
+      <div class="metricas">
+        <div>Passo<b id="m-passo">0 / 0</b></div>
+        <div>Elementos (n)<b id="m-n">0</b></div>
+        <div>Comparações<b id="m-comp">0</b></div>
+        <div>Trocas<b id="m-trocas">0</b></div>
+        <div class="total">Operações totais (comparações + trocas)<b id="m-ops">0</b></div>
+      </div>
+
+      <h3>Variáveis auxiliares</h3>
+      <ul id="variaveis">
+        <li>i = <span id="v-i">—</span></li>
+        <li>pai(i) = <span id="v-pai">—</span></li>
+        <li>esq(i) = <span id="v-esq">—</span></li>
+        <li>dir(i) = <span id="v-dir">—</span></li>
+      </ul>
+
+      <h3>Log do passo atual</h3>
+      <p id="log-atual" class="log-atual"></p>
+
+      <h3>Histórico</h3>
+      <ol id="historico"></ol>
+    </aside>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
